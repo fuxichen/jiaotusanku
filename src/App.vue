@@ -259,7 +259,8 @@ function start() {
           :key="item2"
           :src="
             item2
-              ? 'https://i.328888.xyz/2023/01/09/0m4pF.png'
+              ? '\n'+
+'https://my-picture-bucket.oss-cn-hongkong.aliyuncs.com/assets/8d868718094b09a011b68bb73f658b02.png'
               : 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\'/%3E'
           "
         />
@@ -271,7 +272,7 @@ function start() {
         <img
           class="rabbit"
           :class="{ active: rabbitCurrentHome === item }"
-          src="https://i.328888.xyz/2023/01/09/0cIw5.png"
+          src="https://my-picture-bucket.oss-cn-hongkong.aliyuncs.com/assets/53d39b729489c52b80c57fc530570259.png"
         />
       </div>
     </div>
@@ -286,7 +287,7 @@ function start() {
     </div>
     <!-- 游戏结束 -->
     <div class="game-over" v-if="gameState === -1">
-      <img @click="start()" src="https://i.328888.xyz/2023/01/09/0FUqF.png" />
+      <img @click="start()" src="https://my-picture-bucket.oss-cn-hongkong.aliyuncs.com/assets/ff1d38e27e8ad7fc52e7c0ce4ff46faf.png" />
     </div>
 
     <div>
@@ -322,7 +323,7 @@ function start() {
 .container {
   width: 100vw;
   height: 100vh;
-  background: bottom / 100% 100% no-repeat url('https://i.328888.xyz/2023/01/09/03KZq.jpeg');
+  background: bottom / 100% 100% no-repeat url('https://my-picture-bucket.oss-cn-hongkong.aliyuncs.com/assets/a538f7135011a926b77eed6f72d0674c.jpeg');
   --hammerOffsetX: 35px;
   overflow: hidden;
 }
@@ -451,7 +452,7 @@ function start() {
 }
 
 .rabbit-home__item {
-  background: bottom no-repeat url('https://i.328888.xyz/2023/01/09/0RTjP.png');
+  background: bottom no-repeat url('https://my-picture-bucket.oss-cn-hongkong.aliyuncs.com/assets/e1e3518f6f797dd816bf91bb77cb3f8a.png');
   overflow: hidden;
 }
 
@@ -485,7 +486,7 @@ function start() {
     background: none;
   }
   50% {
-    background: bottom / 100% 100% no-repeat url('https://i.328888.xyz/2023/01/09/0mcaw.png');
+    background: bottom / 100% 100% no-repeat url('https://my-picture-bucket.oss-cn-hongkong.aliyuncs.com/assets/d099b0eda8bffafcaad9ef59c451c4dc.png');
   }
   75%,
   100% {
