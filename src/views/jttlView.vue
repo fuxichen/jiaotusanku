@@ -231,7 +231,7 @@ randomQuestion();
   color: #1e80ff;
 }
 .mode :not(.mode__item:last-child):after {
-  content: "\00A0/\00A0";
+  content: "\u00A0/\u00A0";
   color: #2c3e50;
 }
 
