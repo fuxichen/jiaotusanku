@@ -1,0 +1,51 @@
+@import './base.css';
+
+@font-face {
+  font-family: 'Frijole';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.gstatic.com/s/frijole/v14/uU9PCBUR8oakM2BQ3xTR3w.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Font10970';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://ziti.51ifonts.com/build/build-font-file/?font_id=10970&words=4eca,6709,96c9,5154,540c,7b3c,4e0a,6709,5934,4e0b,6709,8db3,ff0c,95ee,5404,51e0,4f55,ff1f,96f6,4e00,4e8c,4e09,56db,4e94,516d,4e03,516b,4e5d,5341,767e,7b54,66f0,ff1a,672a,77e5&format=ttf&hex=1') format('woff2');
+  unicode-range: U+4eca, U+6709, U+96c9, U+5154, U+540c, U+7b3c, U+4e0a, U+6709, U+5934, U+4e0b, U+6709, U+8db3, U+ff0c, U+95ee, U+5404, U+51e0, U+4f55, U+ff1f, U+96f6, U+4e00, U+4e8c, U+4e09, U+56db, U+4e94, U+516d, U+4e03, U+516b, U+4e5d, U+5341, U+767e, U+7b54, U+66f0, U+ff1a, U+672a, U+77e5;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }
+}
