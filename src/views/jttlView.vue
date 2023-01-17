@@ -20,7 +20,7 @@ const penRef = ref<HTMLDivElement>();
  * 处理数字转中文(补足三位数)
  * @param num
  */
-function handleBunToStr(num: number) {
+function handleNumToStr(num: number) {
   let result = convertNumToWord(num);
   return num > 10 && num < 20 ? result.padStart(3, "一") : result;
 }
@@ -31,8 +31,8 @@ function handleBunToStr(num: number) {
  * @param footNum
  */
 function getPoetryList(totalNum: number, footNum: number) {
-  let totalStr = handleBunToStr(totalNum);
-  let footStr = handleBunToStr(footNum);
+  let totalStr = handleNumToStr(totalNum);
+  let footStr = handleNumToStr(footNum);
   return [
     "雉兔同笼",
     "今有雉兔同笼，",
@@ -54,7 +54,10 @@ function setPoetryList(
 ) {
   let list: string[] = [];
   state.poetryList = [""];
+  state.totalNum = totalNum;
+  state.footNum = footNum;
   let result = state.poetryList;
+  console.log(getPoetryList(totalNum, footNum));
   getPoetryList(totalNum, footNum).forEach((v, i) => {
     if (i === 0) {
       list.push(v);
@@ -68,7 +71,7 @@ function setPoetryList(
   if (answer) {
     let str = `答曰：\n${
       answer.state
-        ? `${convertNumToWord(answer.rabbitNum)}兔\n${convertNumToWord(
+        ? `${handleNumToStr(answer.rabbitNum)}兔\n${handleNumToStr(
             answer.chickenNum
           )}雉`
         : "未知"
@@ -104,7 +107,11 @@ function getChickenRabbit(totalNum: number, footNum: number) {
   let rabbitFootNum = footNum - totalNum * 2;
   let rabbitNum = rabbitFootNum / 2;
   let chickenNum = totalNum - rabbitNum;
-  if (String(`${rabbitNum}${chickenNum}`).includes(".")) {
+  if (
+    String(`${rabbitNum}${chickenNum}`).includes(".") ||
+    rabbitNum < 0 ||
+    chickenNum < 0
+  ) {
     state = false;
   }
   return {
@@ -118,16 +125,23 @@ function getChickenRabbit(totalNum: number, footNum: number) {
  * 答题处理函数
  */
 function inputHandle() {
-  let str = prompt("请输入兔子数量");
+  if (state.currentMode !== 0) return alert("请在答题模式下答题！");
+  let str = prompt("请输入兔子和鸡的数量(如 12,13):");
   if (str) {
-    if (!/^\d+$/.test(str)) {
+    if (!/^\d+,\d+$/.test(str)) {
       return alert("输入格式不正确");
     }
     let { totalNum, footNum } = state;
-    let { chickenNum } = getChickenRabbit(totalNum, footNum);
-    console.log(chickenNum);
-    if (Number(str) === getChickenRabbit(totalNum, footNum).chickenNum) {
+    let numList = str.split(",").map((v) => {
+      return parseInt(v);
+    });
+    console.log(numList[0] * 4 + numList[1] * 2, numList[0] + numList[1]);
+    if (
+      numList[0] * 4 + numList[1] * 2 === footNum &&
+      numList[0] + numList[1] === totalNum
+    ) {
       alert("恭喜您！答对了");
+      randomQuestion();
     } else {
       alert("非常遗憾！答错了。\n继续加油吧!");
     }
@@ -155,11 +169,9 @@ function setAQuestion() {
     let numList = str.split(",").map((v) => {
       return parseInt(v);
     });
-    state.totalNum = numList[0];
-    state.footNum = numList[1];
     setPoetryList(
-      state.totalNum,
-      state.footNum,
+      numList[0],
+      numList[1],
       getChickenRabbit(state.totalNum, state.footNum)
     );
   }
