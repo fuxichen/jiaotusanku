@@ -19,6 +19,14 @@ const router = createRouter({
         title: "鸡兔同笼",
       },
     },
+    {
+      path: "/ffl",
+      name: "ffl",
+      component: () => import("../views/fflView.vue"),
+      meta: {
+        title: "小兔翻翻乐",
+      },
+    },
   ],
 });
 
